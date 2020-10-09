@@ -1,17 +1,6 @@
-require('dotenv').config()
-const readline = require('readline-sync')
-const robots = {
-  text: require('./robots/text')
-}
 
-async function start() {
-  const content = {}
 
-  content.searchTerm = askAndReturnSearchTerm()
-  content.prefix = askAndReturnPrefix()
-
-  await robots.text(content)
-
+function robot(content) {
   function askAndReturnSearchTerm() {
     return readline.question('Type a Wikipedia search term: ')
   }
@@ -19,7 +8,7 @@ async function start() {
   function askAndReturnPrefix() {
     const prefixes = [
       'Who is',
-      'What is',
+      'Wha is',
       'The history of'
     ]
 
@@ -29,7 +18,7 @@ async function start() {
     return selectedPrefixText
   }
 
-  console.log(content)
+  return content
 }
 
-start()
+module.exports = robot
